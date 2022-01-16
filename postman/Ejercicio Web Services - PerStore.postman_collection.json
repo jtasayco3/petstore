@@ -1,0 +1,257 @@
+{
+	"info": {
+		"_postman_id": "3a12d6db-a52e-4237-b708-68f13668501a",
+		"name": "Ejercicio Web Services - PerStore",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Pet",
+			"item": [
+				{
+					"name": "Caso Exitoso: Agregar una mascota a la tienda de manera exitosa",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Validando status del API con valor 200\",function(){\r",
+									"   pm.expect(pm.response.code).to.eql(200)\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Validar nombre de la mascota\",function(){\r",
+									"    const responseJson = pm.response.json()\r",
+									"    pm.expect(responseJson.name).to.eql(\"Misha\")\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Validar nombre de la categoria\",function(){\r",
+									"    const responseJson = pm.response.json()\r",
+									"    pm.expect(responseJson.category.name).to.eql(\"perro\")\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": {{id}},\r\n  \"category\": {\r\n    \"id\": 1,\r\n    \"name\": \"perro\"\r\n  },\r\n  \"name\": \"Misha\",\r\n  \"photoUrls\": [\r\n    \"string\"\r\n  ],\r\n  \"tags\": [\r\n    {\r\n      \"id\": 1,\r\n      \"name\": \"string\"\r\n    }\r\n  ],\r\n  \"status\": \"available\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://petstore.swagger.io/v2/pet",
+							"protocol": "https",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"pet"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Caso Fallido: Agregar mascota sin enviar el Body",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Validando status del API con valor 200\",function(){\r",
+									"   pm.expect(pm.response.code).to.eql(200)\r",
+									"})\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://petstore.swagger.io/v2/pet",
+							"protocol": "https",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"pet"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": null,
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Caso Exitoso: Obtener una mascota registrada en la tienda",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Validando status del API con valor 200\",function(){\r",
+									"   pm.expect(pm.response.code).to.eql(200)\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Validar nombre de la mascota\",function(){\r",
+									"    const responseJson = pm.response.json()\r",
+									"    pm.expect(responseJson.name).to.eql(\"luna\")\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Validar nombre de la categoria\",function(){\r",
+									"    const responseJson = pm.response.json()\r",
+									"    pm.expect(responseJson.category.name).to.eql(\"perro\")\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Validar disponibilidad status\",function(){\r",
+									"    const responseJson = pm.response.json()\r",
+									"    pm.expect(responseJson.status).to.eql(\"available\")\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"url": {
+							"raw": "https://petstore.swagger.io/v2/pet/10",
+							"protocol": "https",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"pet",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Caso Exitoso: Actualizar una mascota existente",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Validando status del API con valor 200\",function(){\r",
+									"   pm.expect(pm.response.code).to.eql(200)\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Validar nombre de la mascota\",function(){\r",
+									"    const responseJson = pm.response.json()\r",
+									"    pm.expect(responseJson.name).to.eql(\"Misha\")\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Validar nombre de la categoria\",function(){\r",
+									"    const responseJson = pm.response.json()\r",
+									"    pm.expect(responseJson.category.name).to.eql(\"perro\")\r",
+									"})\r",
+									"\r",
+									"pm.test(\"Validar disponibilidad status\",function(){\r",
+									"    const responseJson = pm.response.json()\r",
+									"    pm.expect(responseJson.status).to.eql(\"available\")\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": {{id}},\r\n  \"category\": {\r\n    \"id\": 1,\r\n    \"name\": \"perro\"\r\n  },\r\n  \"name\": \"Misha\",\r\n  \"photoUrls\": [\r\n    \"string\"\r\n  ],\r\n  \"tags\": [\r\n    {\r\n      \"id\": 1,\r\n      \"name\": \"string\"\r\n    }\r\n  ],\r\n  \"status\": \"available\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://petstore.swagger.io/v2/pet",
+							"protocol": "https",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"pet"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

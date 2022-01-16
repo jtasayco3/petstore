@@ -10,6 +10,7 @@
 4. Instalar Node version Windows
 5. Instalar Git (versionamiento de codigo)
 6. Clonar el proyecto del repositorio remoto brindado.
+7. Abrir postman e importar los archivos collection y environment (ambos archivos se encuentra en el proyecto) en el UI de postman.
 
 ### Instalación
 
